@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import *
 from .filters import CourseFilter
 
@@ -15,3 +15,7 @@ def home(request):
         'resp':resp
     }
     return render(request, "search/home.html", context)
+
+def detail(request, pk):
+    detail = Response.objects.get(pk=pk)
+    return render(request, 'search/detail.html', context={'detail': detail})

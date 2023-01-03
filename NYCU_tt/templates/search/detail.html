@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<h1>課程心得</h1>
+
+<h2>課程名稱: {{ detail.course.courseName }}</h2>
+<ul>
+  <li><strong>教授 : </strong> {{ detail.course.professor }}</li>
+  <li><strong>學期 : </strong> {{ detail.course.semester }}</li>
+  <li><strong>時間 : </strong> {{ detail.course.time }}</li>
+  <li><strong>學分 : </strong> {{ detail.course.credit }}</li>
+  <li><strong>評分方式 : </strong> {{ detail.gradindpolicy }}</li>
+  <li><strong>上課方式 : </strong> {{ detail.classMethod }}</li>
+  <li><strong>心得 : </strong> {{ detail.resp }}</li>
+  <li><strong>總體推薦度 : </strong> {{ detail.recommand }}</li>
+</ul>
+
+{% endblock  %}

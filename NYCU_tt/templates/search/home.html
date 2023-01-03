@@ -23,7 +23,7 @@
                 {% for j in resp %}
                 <tr>
                     {% if i.id == j.course.id %}
-                    <td>{{ j.id }}</td>
+                    <td><a href="{% url 'course_detail' j.id %}">{{ j.id }}</a></td>
                     <td>{{ i.courseName }}</td>
                     <td>{{ i.professor }}</td>
                     <td>{{ i.semester }}</td>
