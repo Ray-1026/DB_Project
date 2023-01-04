@@ -4,8 +4,10 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 
-<form method='POST'>
-    {% csrf_token %}
+{%load search_extras %}
+
+<form method='GET'>
+
     課程：{{ cf.form.courseName }}
     教授：{{ cf.form.professor }}
     開課學院：{{ cf.form.college }}
@@ -43,7 +45,7 @@
         {% if page == course_page.number %}
             {{ page }}
         {% else %}
-            <a href="?page={{ page }}">{{ page }}</a>
+            <a href="{% my_url page 'page' request.GET.urlencode %}">{{ page }}</a>
         {% endif %}
     {% endfor %}
 </p>

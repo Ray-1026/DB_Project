@@ -8,9 +8,7 @@ from django.core.paginator import Paginator
 def home(request):
     course = Course.objects.all().order_by('-id')
     resp = Response.objects.all().order_by('-id')
-    cf = CourseFilter(queryset = course)
-    if request.method == "POST":
-        cf = CourseFilter(request.POST, queryset = course)
+    cf = CourseFilter(request.GET, queryset = course)
     
     paginated_filter = Paginator(cf.qs, 10)
     page_number = request.GET.get('page')
