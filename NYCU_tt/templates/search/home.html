@@ -7,31 +7,45 @@
 <form method='POST'>
     {% csrf_token %}
     課程：{{ cf.form.courseName }}
+    <br/>
     教授：{{ cf.form.professor }}
+    <br/>
     開課學院：{{ cf.form.college }}
     <input type="submit" class="btn btn-primary" value="查詢" />
 </form>
-<br />
+<br/>
 <table class="table">
     <thead>
         <th>編號</th>
         <th>課程</th>
         <th>教授</th>
         <th>學期</th>
+        <th>開課學院</th>
     </thead>
     <tbody>
             {% for i in resp %}
-                {% for j in cf.qs %}
+                {% for j in course_page %}
                 <tr>
                     {% if i.course.id == j.id %}
                     <td><a href="{% url 'course_detail' i.id %}">{{ i.id }}</a></td>
                     <td>{{ i.course.courseName }}</td>
                     <td>{{ i.course.professor }}</td>
                     <td>{{ i.course.semester }}</td>  
+                    <td>{{ i.course.college }}</td>
                     {% endif %}
                 </tr>
                 {% endfor %}
             {% endfor %}
     </tbody>
 </table>
-{% endblock  %}
+<p>
+    page
+    {% for page in total %}
+        {% if page == course_page.number %}
+            {{ page }}
+        {% else %}
+            <a href="?page={{ page }}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+</p>
+{% endblock %}

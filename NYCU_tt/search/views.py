@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from .filters import CourseFilter
 from .forms import *
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
@@ -10,9 +11,17 @@ def home(request):
     cf = CourseFilter(queryset = course)
     if request.method == "POST":
         cf = CourseFilter(request.POST, queryset = course)
+    
+    paginated_filter = Paginator(cf.qs, 10)
+    page_number = request.GET.get('page')
+    course_page = paginated_filter.get_page(page_number)
+    total = paginated_filter.page_range
+
     context={
         'cf':cf,
-        'resp':resp
+        'resp':resp,
+        'course_page':course_page,
+        'total':total,
     }
     return render(request, "search/home.html", context)
 
