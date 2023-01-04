@@ -13,6 +13,10 @@ class CourseFilter(django_filters.FilterSet):
         widget = forms.TextInput(attrs={'class':'form-control'})
     )
 
+    college = django_filters.CharFilter(
+        widget = forms.Select(choices=(('', '請選擇'),) + Course.college_choices, attrs={'class':'form-control'})
+    )
+
     class Meta:
         model = Course
         fields = '__all__'

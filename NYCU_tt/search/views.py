@@ -24,7 +24,7 @@ def create(request):
     form1 = RawCourseForm(request.POST or None)
     form2 = RawResponseForm(request.POST or None)
     if form1.is_valid():
-        exist = Course.objects.filter(courseName=request.POST['courseName']).filter(professor=request.POST['professor']).filter(semester=request.POST['semester'])
+        exist = Course.objects.filter(courseName=request.POST['courseName']).filter(professor=request.POST['professor']).filter(semester=request.POST['semester']).filter(college=request.POST['college'])
         if not exist:
             Course.objects.create(**form1.cleaned_data)
             form1 = RawCourseForm()
@@ -32,7 +32,8 @@ def create(request):
         name = request.POST.get('courseName')
         prof = request.POST.get('professor')
         s = request.POST.get('semester')
-        get_course_id = Course.objects.filter(courseName=name).filter(professor=prof).filter(semester=s)
+        col = request.POST.get('college')
+        get_course_id = Course.objects.filter(courseName=name).filter(professor=prof).filter(semester=s).filter(college=col)
         Response.objects.create(course=get_course_id[0], **form2.cleaned_data)
         form2 = RawResponseForm()
     context ={
