@@ -24,18 +24,14 @@
         <th>開課學院</th>
     </thead>
     <tbody>
-            {% for i in resp %}
-                {% for j in course_page %}
+            {% for j in resps %}
                 <tr>
-                    {% if i.course.id == j.id %}
-                    <td><a href="{% url 'course_detail' i.id %}">{{ i.id }}</a></td>
-                    <td>{{ i.course.courseName }}</td>
-                    <td>{{ i.course.professor }}</td>
-                    <td>{{ i.course.semester }}</td>  
-                    <td>{{ i.course.college }}</td>
-                    {% endif %}
+                    <td><a href="{% url 'course_detail' j.id %}">{{ j.id }}</a></td>
+                    <td>{{ j.course.courseName }}</td>
+                    <td>{{ j.course.professor }}</td>
+                    <td>{{ j.course.semester }}</td>  
+                    <td>{{ j.course.college }}</td>
                 </tr>
-                {% endfor %}
             {% endfor %}
     </tbody>
 </table>

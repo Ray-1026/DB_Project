@@ -7,7 +7,6 @@ from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
     course = Course.objects.all().order_by('-id')
-    resp = Response.objects.all().order_by('-id')
     cf = CourseFilter(request.GET, queryset = course)
     
     paginated_filter = Paginator(cf.qs, 10)
@@ -15,9 +14,11 @@ def home(request):
     course_page = paginated_filter.get_page(page_number)
     total = paginated_filter.page_range
 
+    resps = Response.objects.filter(course__in=course_page).order_by('-id')
+
     context={
         'cf':cf,
-        'resp':resp,
+        'resps':resps,
         'course_page':course_page,
         'total':total,
     }
