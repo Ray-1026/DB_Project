@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'NYCU_tt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',  #PostgreSQL
+        'NAME': 'NYCU++',  #資料庫名稱
+        'USER': 'postgres',  #資料庫帳號
+        'PASSWORD': '0123456789',  #資料庫密碼
+        'HOST': 'nycu-tt.ckfb6k5uf2tr.us-east-1.rds.amazonaws.com',  #Server(伺服器)位址
+        'PORT': '5432'  #PostgreSQL Port號
     }
 }
 

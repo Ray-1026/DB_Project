@@ -5,16 +5,24 @@
 {% bootstrap_css %}
 
 <h1>課程心得</h1>
-
+<br/>
 <h2>課程名稱: {{ detail.course.courseName }}</h2>
+<br/>
 <ul>
   <li><strong>教授 : </strong> {{ detail.course.professor }}</li>
+  <br/>
   <li><strong>學期 : </strong> {{ detail.course.semester }}</li>
+  <br/>
   <li><strong>時間 : </strong> {{ detail.course.time }}</li>
+  <br/>
   <li><strong>學分 : </strong> {{ detail.course.credit }}</li>
+  <br/>
   <li><strong>評分方式 : </strong> {{ detail.gradingpolicy }}</li>
+  <br/>
   <li><strong>上課方式 : </strong> {{ detail.classMethod }}</li>
+  <br/>
   <li><strong>心得 : </strong> {{ detail.resp }}</li>
+  <br/>
   <li><strong>總體推薦度 : </strong> {{ detail.recommand }}</li>
 </ul>
 

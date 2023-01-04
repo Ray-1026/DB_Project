@@ -7,10 +7,9 @@
 <form method='POST'>
     {% csrf_token %}
     課程：{{ cf.form.courseName }}
-    <br/>
     教授：{{ cf.form.professor }}
-    <br/>
     開課學院：{{ cf.form.college }}
+    <br/>
     <input type="submit" class="btn btn-primary" value="查詢" />
 </form>
 <br/>
