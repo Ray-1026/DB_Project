@@ -2,38 +2,15 @@ from django import forms
 from .models import *
 from django.utils.translation import gettext_lazy as _
 
-class CourseForm(forms.ModelForm):
-    class Meta:
-        model = Course
-        fields = '__all__'
-
-class ResponseForm(forms.ModelForm):
-    class Meta:
-        model = Response
-        fields = '__all__'
-        labels = {
-            'gradindpolicy':_('評分方式'),
-            'classMethod':_('上課方式'),
-            'resp':_('心得'),
-            'recommand':_('總體推薦度(1~5)'),
-        }
-
 class RawCourseForm(forms.Form):
-    courseName = forms.CharField()
-    professor = forms.CharField()
-    semester = forms.CharField()
-    time = forms.CharField()
-    credit = forms.DecimalField()
-    class Meta:
-        labels = {
-            'gradindpolicy':_('評分方式'),
-            'classMethod':_('上課方式'),
-            'resp':_('心得'),
-            'recommand':_('總體推薦度(1~5)'),
-        }
+    courseName = forms.CharField(label = '課程名稱')
+    professor = forms.CharField(label = '授課教授')
+    semester = forms.CharField(label = '修課年度 (ex : 110下)')
+    time = forms.CharField(label = '上課時間 (ex : T34)')
+    credit = forms.DecimalField(label = '學分數')
 
 class RawResponseForm(forms.Form):
-    gradindpolicy = forms.CharField()
-    classMethod = forms.CharField()
-    resp = forms.CharField()
-    recommand = forms.DecimalField()
+    gradindpolicy = forms.CharField(label = '評分占比')
+    classMethod = forms.CharField(label = '上課方式')
+    resp = forms.CharField(label = '心得')
+    recommand = forms.DecimalField(label = '總體推薦度 (1 ~ 5)')
