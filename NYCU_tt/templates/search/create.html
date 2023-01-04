@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<h2> 課程評價</h2>
+<form method='POST'>
+    {% csrf_token %} 
+    {{ form1.as_p }}
+    {{ form2.as_p }}
+    <input type="submit" value="新增" />
+</form>
+
+{% endblock  %}
